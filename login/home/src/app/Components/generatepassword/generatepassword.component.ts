@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GeneratepasswordComponent {
   password = '';
-  length: number = 8;
+  length: number = 0;
   includeLetters: boolean = false;
   includeNumbers: boolean = false;
   includeSymbols: boolean = false;
@@ -28,7 +28,6 @@ export class GeneratepasswordComponent {
   modifySymbols() {
     this.includeSymbols = !this.includeSymbols;
   }
-
   buttonClick() {
     const numbers = '1234567890';
     const letters = 'abcdefghijklmnopqrstuvwyz';

@@ -14,107 +14,123 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Document</title>
   </head>
-  <div class="cerceve">
-    <body>
-      <form class="table">
-        <p
-          style="
-            color: black;
-            size: 30px;
-            font-style: oblique;
-            font-weight: bold;
-          "
-        >
-          SİGN UP
-        </p>
 
-        <form [formGroup]="signform">
-          <input
-            type="text"
-            formControlName="email"
-            placeholder="Enter email"
-          />
-          <div
-            *ngIf="signform.get('email')?.errors?.['required']"
-            style="color: red"
-          >
-            *Zorunlu Alan
+  <body>
+    <div class="mainArea">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="box column is-one-third">
+            <p style="color: black; size: 30px; font-weight: bold">SİGN UP</p>
+            <div class="example-container">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input
+                  type="email"
+                  matInput
+                  [formControl]="emailFormControl"
+                  placeholder="Ex. pat@example.com"
+                />
+                <mat-error
+                  *ngIf="
+                    emailFormControl.hasError('email') &&
+                    !emailFormControl.hasError('required')
+                  "
+                >
+                  Please enter a valid email address
+                </mat-error>
+
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                  Email is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Enter your password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" />
+                <button
+                  class="a"
+                  mat-icon-button
+                  matSuffix
+                  (click)="hide = !hide"
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide"
+                >
+                  <mat-icon>{{
+                    hide ? "visibility_off" : "visibility"
+                  }}</mat-icon>
+                </button>
+
+                <div
+                  *ngIf="passwordFormControl.get('password')?.errors?.['required']"
+                >
+                  *Zorunlu Alan
+                </div>
+              </mat-form-field>
+
+              <form class="example-form">
+                <table class="example-full-width" cellspacing="0">
+                  <tr>
+                    <td>
+                      <mat-form-field
+                        class="example-full-width"
+                        appearance="fill"
+                      >
+                        <mat-label>First name</mat-label>
+                        <input matInput />
+                      </mat-form-field>
+                    </td>
+                  </tr>
+                </table>
+              </form>
+            </div>
+            <section>
+              <div class="example-button-row">
+                <button
+                  class="b"
+                  type="submit"
+                  mat-flat-button
+                  color="primary"
+                  a
+                  [routerLink]="['/homepage']"
+                  [disabled]="emailFormControl.invalid"
+                  a
+                >
+                  Sign İn
+                </button>
+
+                <br /><br />
+
+                <button
+                  class="c"
+                  type="submit"
+                  mat-flat-button
+                  color="primary"
+                  a
+                  [routerLink]="['/login']"
+                  a
+                >
+                  Go Back
+                </button>
+                <br /><br />
+                <button
+                  class="d"
+                  type="submit"
+                  mat-raised-button
+                  color="accent"
+                  a
+                  [routerLink]="['/generatepassword']"
+                  a
+                >
+                  Generate Password
+                </button>
+              </div>
+            </section>
           </div>
-        </form>
-        <br /><br />
-
-        <form [formGroup]="signform">
-          <mat-form-field>
-            <input
-              matInput
-              placeholder="Password"
-              [type]="hide ? 'password' : 'text'"
-              formControlName="password"
-              required
-            />
-            <mat-icon matSuffix (click)="hide = !hide">{{
-              hide ? "visibility_off" : "visibility"
-            }}</mat-icon>
-          </mat-form-field>
-
-          <div
-            *ngIf="signform.get('password')?.errors?.['required']"
-            style="color: red"
-          >
-            *Zorunlu Alan
-          </div>
-          <div *ngIf="signform.get('password')?.errors?.['minlength']">
-            Girdiğiniz isim
-            {{signform.get('password')?.errors?.['minlength']?.['actualLength']}}
-            karakter içermektedir, fakat minumum
-            {{signform.get('password')?.errors?.['minlength']?.['requiredLength']}}
-            karakter olmalıdır
-          </div>
-        </form>
-
-        <br />
-        <br />
-        <form [formGroup]="signform">
-          <input
-            type="text"
-            formControlName="name"
-            placeholder="Enter name"
-            [value]=""
-          />
-          <div *ngIf="signform.get('name')?.errors?.['required']">
-            *Zorunlu Alan
-          </div>
-        </form>
-        <br /><br />
-
-        <button
-          type="submit"
-          class="btn btn-success"
-          a
-          [routerLink]="['/homepage']"
-          [disabled]="signform.invalid"
-          a
-        >
-          sign in
-        </button>
-
-        <br /><br />
-        <button type="submit" class="btn btn-danger" [routerLink]="['/login']">
-          Go Back
-        </button>
-        <br />
-        <br />
-
-        <button
-          type="submit"
-          class="btn btn-primary"
-          [routerLink]="['/generatepassword']"
-        >
-          Generate Password
-        </button>
-      </form>
-    </body>
-  </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

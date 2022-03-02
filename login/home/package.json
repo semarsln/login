@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "postinstall": "ngcc"
   },
   "private": true,
   "dependencies": {
@@ -15,6 +16,7 @@
     "@angular/common": "~13.2.0",
     "@angular/compiler": "~13.2.0",
     "@angular/core": "~13.2.0",
+    "@angular/flex-layout": "^13.0.0-beta.38",
     "@angular/forms": "~13.2.0",
     "@angular/material": "^13.2.4",
     "@angular/platform-browser": "~13.2.0",
@@ -26,11 +28,18 @@
     "faker": "^6.6.6",
     "font-awesome": "^4.7.0",
     "generate-password": "^1.7.0",
+    "ng-sidebar": "^9.4.3",
+    "ng2-charts": "^3.0.8",
     "ngx-material-file-input": "^3.0.0",
     "ngx-show-hide-password": "^2.4.0",
+    "primeicons": "^5.0.0",
+    "primeng": "^13.2.0",
     "require": "^0.4.4",
     "rxjs": "~7.5.0",
+    "screenfull": "^6.0.1",
+    "screenfull-es6": "^0.1.3",
     "tslib": "^2.3.0",
+    "vue-fullscreen": "^2.6.1",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
 import { preserveWhitespacesDefault } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { HomepageComponent } from '../homepage/homepage.component';
+
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RouterEvent, RouterLinkWithHref } from '@angular/router';
 
@@ -11,17 +11,16 @@ import { RouterEvent, RouterLinkWithHref } from '@angular/router';
 })
 export class SignComponent implements OnInit {
   hide = true;
-  signform = new FormGroup({
-    password: new FormControl(null, [
-      Validators.required,
-      Validators.minLength(8),
-    ]),
-    email: new FormControl(null, [Validators.required]),
-    name: new FormControl(null, [Validators.required]),
-  });
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
+  passwordFormControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(8),
+  ]);
 
   constructor() {}
 
   ngOnInit(): void {}
-  buttonClick() {}
 }
